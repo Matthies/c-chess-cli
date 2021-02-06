@@ -316,6 +316,8 @@ size_t str_getline(str_t *out, FILE *in)
     while (true) {
         c = getc_unlocked(in);
 
+        if (c == '\r')
+            continue;
         if (c != '\n' && c != EOF)
             str_push(out, (char)c);
         else
